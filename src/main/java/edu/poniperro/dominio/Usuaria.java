@@ -18,6 +18,12 @@ public class Usuaria extends PanacheEntityBase { // IMPORTANTE usar PanacheEntit
     @Column(name = "user_prop")
     private int destreza = 0; // si la usuaria no existe, este será su valor por defecto
 
+    public Usuaria() {}
+
+    public Usuaria(String nombreUsuaria) {
+        this.nombre = nombreUsuaria;
+    }
+
     public String getNombre() {
         return nombre;
     }

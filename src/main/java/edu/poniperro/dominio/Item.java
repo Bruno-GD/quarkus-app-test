@@ -21,6 +21,17 @@ public class Item extends PanacheEntityBase { // IMPORTANTE usar PanacheEntityBa
     @Column(name = "item_tipo")
     private String tipo = ""; // si la usuaria no existe, este será su valor por defecto
 
+    public Item() {}
+
+    public Item(String nombreItem) {
+        this.nombre = nombreItem;
+    }
+
+    public Item(String nombreItem, int quality) {
+        this.nombre = nombreItem;
+        this.quality = quality;
+    }
+
     public String getNombre() {
         return nombre;
     }
