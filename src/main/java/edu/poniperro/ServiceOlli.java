@@ -78,14 +78,18 @@ public class ServiceOlli {
     @Transactional
     public Orden comanda(String nombreUsuaria, String nombreItem) {
         // obtenemos la Usuaria y el Item de base de datos
-        Usuaria usuaria = Usuaria.findById(nombreUsuaria);
-        Item item = Item.findById(nombreItem);
+        Optional<Usuaria> usuaria = Usuaria.findByIdOptional(nombreUsuaria);
+        Optional<Item> item = Item.findByIdOptional(nombreItem);
+        Orden orden = null;
 
-        // Creamos una nueva Orden para Usuaria con Item
-        Orden orden = new Orden(usuaria, item);
+        if (usuaria.isPresent() &&
+            item.isPresent()) {
+            // Creamos una nueva Orden para Usuaria con Item
+            orden = new Orden(usuaria.get(), item.get());
 
-        // La guardamos en base de datos
-        orden.persist();
+            // La guardamos en base de datos
+            orden.persist();
+        }
 
         return orden;
     }

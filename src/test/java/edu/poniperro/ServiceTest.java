@@ -195,19 +195,19 @@ public class ServiceTest {
 	 * para que NO permita generar pedidos de productos
 	 * si no existe la usuaria en la base de datos.
 	 */
-//	@Test
-//	public void test_comanda_no_user() {
-//		Assertions.assertThat(servicio).isNotNull();
-//		Orden orden = servicio.comanda("Severus", "+5 Dexterity Vest");
-//		Assertions.assertThat(orden).isNull();
-//		Usuaria profesor = servicio.cargaUsuaria("Severus");
-//		Assertions.assertThat(profesor).isNotNull();
-//		Assertions.assertThat(profesor.getNombre()).isEmpty();
-//        Assertions.assertThat(profesor.getDestreza()).isZero();
-//
-//		Orden pedido = em.find(Orden.class, 3L);
-//        Assertions.assertThat(pedido).isNull();
-//	}
+	@Test
+	public void test_comanda_no_user() {
+		Assertions.assertThat(servicio).isNotNull();
+		Orden orden = servicio.comanda("Severus", "+5 Dexterity Vest");
+		Assertions.assertThat(orden).isNull();
+		Usuaria profesor = servicio.cargaUsuaria("Severus");
+		Assertions.assertThat(profesor).isNotNull();
+		Assertions.assertThat(profesor.getNombre()).isEmpty();
+        Assertions.assertThat(profesor.getDestreza()).isZero();
+
+		Orden pedido = em.find(Orden.class, 3L);
+        Assertions.assertThat(pedido).isNull();
+	}
 
 	/**
      * Implementa el metodo comanda del servicio
