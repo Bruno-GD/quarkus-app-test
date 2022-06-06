@@ -13,7 +13,7 @@ import javax.inject.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import edu.poniperro.dominio.Item;
-//import edu.poniperro.dominio.Orden;
+import edu.poniperro.dominio.Orden;
 import edu.poniperro.dominio.Usuaria;
 
 import io.quarkus.test.junit.QuarkusTest;
@@ -65,13 +65,13 @@ public class ServiceTest {
 	 * de la clase Orden a la tabla t_ordenes
 	 * El id de esta clase ha de seguir una estrategia Identity
 	 */
-//	@Test
-//	public void test_mapping_orden() {
-//		Orden pedido = em.find(Orden.class, 1L);
-//        Assertions.assertThat(pedido).isNotNull();
-//        Assertions.assertThat(pedido.getUser().getNombre()).isEqualTo("Doobey");
-//		Assertions.assertThat(pedido.getItem().getNombre()).isEqualToIgnoringCase("Elixir of the Mongoose");
-//	}
+	@Test
+	public void test_mapping_orden() {
+		Orden pedido = em.find(Orden.class, 1L);
+        Assertions.assertThat(pedido).isNotNull();
+        Assertions.assertThat(pedido.getUser().getNombre()).isEqualTo("Doobey");
+		Assertions.assertThat(pedido.getItem().getNombre()).isEqualToIgnoringCase("Elixir of the Mongoose");
+	}
 
 	/** SERVICIO */
 
