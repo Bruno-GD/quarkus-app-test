@@ -12,7 +12,7 @@ import javax.inject.*;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-//import edu.poniperro.dominio.Item;
+import edu.poniperro.dominio.Item;
 //import edu.poniperro.dominio.Orden;
 //import edu.poniperro.dominio.Usuaria;
 
@@ -39,14 +39,14 @@ public class ServiceTest {
 	 * Completa la definicion y el mapping
 	 * de la clase Item a la tabla t_items
 	 */
-//    @Test
-//    public void test_mapping_normalItem() {
-//        Item elixir = em.find(Item.class, "Elixir of the Mongoose");
-//        Assertions.assertThat(elixir).isNotNull();
-//        Assertions.assertThat(elixir.getNombre()).isEqualTo("Elixir of the Mongoose");
-//		Assertions.assertThat(elixir.getQuality()).isEqualTo(7);
-//        Assertions.assertThat(elixir.getTipo()).isEqualTo("NormalItem");
-//    }
+    @Test
+    public void test_mapping_normalItem() {
+        Item elixir = em.find(Item.class, "Elixir of the Mongoose");
+        Assertions.assertThat(elixir).isNotNull();
+        Assertions.assertThat(elixir.getNombre()).isEqualTo("Elixir of the Mongoose");
+		Assertions.assertThat(elixir.getQuality()).isEqualTo(7);
+        Assertions.assertThat(elixir.getTipo()).isEqualTo("NormalItem");
+    }
 
 	/**
 	 * Completa la definicion y el mapping
