@@ -141,25 +141,25 @@ public class ServiceTest {
      * Si no existe, devuelve una lista vacía.
 	 */
 
-//    @Test
-//	public void test_carga_orden() {
-//        Assertions.assertThat(servicio).isNotNull();
-//		List<Orden> ordenes = servicio.cargaOrden("Hermione");
-//		Assertions.assertThat(ordenes).isNotNull();
-//		Assertions.assertThat(ordenes).hasSize(1);
-//		Assertions.assertThat(ordenes.get(0).getUser().getNombre()).isEqualToIgnoringCase("Hermione");
-//		Assertions.assertThat(ordenes.get(0).getItem().getNombre()).isEqualTo("+5 Dexterity Vest");
-//		// Assertions.assertThat(ordenes).allMatch(orden -> orden.getUser().getNombre().equalsIgnoreCase("Hermione"));
-//		// Assertions.assertThat(ordenes).allMatch(orden -> orden.getItem().getNombre().equalsIgnoreCase("+5 Dexterity Vest"));
-//	}
+    @Test
+	public void test_carga_orden() {
+        Assertions.assertThat(servicio).isNotNull();
+		List<Orden> ordenes = servicio.cargaOrden("Hermione");
+		Assertions.assertThat(ordenes).isNotNull();
+		Assertions.assertThat(ordenes).hasSize(1);
+		Assertions.assertThat(ordenes.get(0).getUser().getNombre()).isEqualToIgnoringCase("Hermione");
+		Assertions.assertThat(ordenes.get(0).getItem().getNombre()).isEqualTo("+5 Dexterity Vest");
+		// Assertions.assertThat(ordenes).allMatch(orden -> orden.getUser().getNombre().equalsIgnoreCase("Hermione"));
+		// Assertions.assertThat(ordenes).allMatch(orden -> orden.getItem().getNombre().equalsIgnoreCase("+5 Dexterity Vest"));
+	}
 
-//    @Test
-//	public void test_carga_orden_no_existe() {
-//        Assertions.assertThat(servicio).isNotNull();
-//		List<Orden> ordenes = servicio.cargaOrden("Severus");
-//		Assertions.assertThat(ordenes).isNotNull();
-//		Assertions.assertThat(ordenes).isEmpty();
-//	}
+    @Test
+	public void test_carga_orden_no_existe() {
+        Assertions.assertThat(servicio).isNotNull();
+		List<Orden> ordenes = servicio.cargaOrden("Severus");
+		Assertions.assertThat(ordenes).isNotNull();
+		Assertions.assertThat(ordenes).isEmpty();
+	}
 
     /**
      * Implementa el metodo "comanda" del servicio

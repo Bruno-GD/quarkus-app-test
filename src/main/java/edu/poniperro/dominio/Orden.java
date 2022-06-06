@@ -1,14 +1,8 @@
 package edu.poniperro.dominio;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import io.quarkus.security.IdentityAttribute;
-import org.jetbrains.annotations.Nullable;
-
 import javax.persistence.*;
-import javax.validation.constraints.Null;
-
-import edu.poniperro.dominio.Usuaria;
-import edu.poniperro.dominio.Item;
+import java.util.List;
 
 @Entity
 @Table(name = "t_ordenes")
@@ -49,5 +43,9 @@ public class Orden extends PanacheEntityBase { // IMPORTANTE usar PanacheEntityB
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public static List<Orden> getByUsuariaName(String name) {
+        return list("ord_user", name);
     }
 }

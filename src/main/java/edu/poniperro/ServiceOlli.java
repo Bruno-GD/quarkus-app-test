@@ -1,10 +1,11 @@
 package edu.poniperro;
 
 import edu.poniperro.dominio.Item;
+import edu.poniperro.dominio.Orden;
 import edu.poniperro.dominio.Usuaria;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -44,5 +45,20 @@ public class ServiceOlli {
         return item.isPresent()
                 ? item.get()
                 : new Item();
+    }
+
+    /**
+     * Devuelve una lista con los pedidos de la usuaria
+     * con el nombre indicado, si existe.
+     * Si no existe, devuelve una lista vacía.
+     *
+     * @param nombreUsuaria nombre de la Usuaria
+     * @return Lista de ordenes
+     * @see Orden
+     * @see Item
+     * @see Usuaria
+     */
+    public List<Orden> cargaOrden(String nombreUsuaria) {
+        return Orden.getByUsuariaName(nombreUsuaria);
     }
 }
