@@ -116,23 +116,23 @@ public class ServiceTest {
      * y valores como se indica en los casos test.
 	 */
 
-//    @Test
-//	public void test_carga_item() {
-//        Assertions.assertThat(servicio).isNotNull();
-//		Item item = servicio.cargaItem("Elixir of the Mongoose");
-//		Assertions.assertThat(item).isNotNull();
-//		Assertions.assertThat(item.getNombre()).isEqualTo("Elixir of the Mongoose");
-//		Assertions.assertThat(item.getQuality()).isEqualTo(7);
-//	}
-//
-//    @Test
-//	public void test_carga_item_no_existe() {
-//        Assertions.assertThat(servicio).isNotNull();
-//		Item item = servicio.cargaItem("Reliquias de la muerte");
-//		Assertions.assertThat(item).isNotNull();
-//		Assertions.assertThat(item.getNombre()).isEmpty();
-//		Assertions.assertThat(item.getQuality()).isZero();
-//	}
+    @Test
+	public void test_carga_item() {
+        Assertions.assertThat(servicio).isNotNull();
+		Item item = servicio.cargaItem("Elixir of the Mongoose");
+		Assertions.assertThat(item).isNotNull();
+		Assertions.assertThat(item.getNombre()).isEqualTo("Elixir of the Mongoose");
+		Assertions.assertThat(item.getQuality()).isEqualTo(7);
+	}
+
+    @Test
+	public void test_carga_item_no_existe() {
+        Assertions.assertThat(servicio).isNotNull();
+		Item item = servicio.cargaItem("Reliquias de la muerte");
+		Assertions.assertThat(item).isNotNull();
+		Assertions.assertThat(item.getNombre()).isEmpty();
+		Assertions.assertThat(item.getQuality()).isZero();
+	}
 
 	/**
 	 * Implementa el metodo cargaOrden del servicio.

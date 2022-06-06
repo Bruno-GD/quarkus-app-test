@@ -13,13 +13,13 @@ public class Item extends PanacheEntityBase { // IMPORTANTE usar PanacheEntityBa
 
     @Id
     @Column(name = "item_nom")
-    private String nombre;
+    private String nombre = ""; // si la usuaria no existe, este será su valor por defecto
 
     @Column(name = "item_prop")
-    private int quality;
+    private int quality = 0; // si la usuaria no existe, este será su valor por defecto
 
     @Column(name = "item_tipo")
-    private String tipo;
+    private String tipo = ""; // si la usuaria no existe, este será su valor por defecto
 
     public String getNombre() {
         return nombre;
