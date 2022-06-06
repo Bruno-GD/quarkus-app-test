@@ -25,11 +25,23 @@ public class Item extends PanacheEntityBase { // IMPORTANTE usar PanacheEntityBa
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public int getQuality() {
         return quality;
     }
 
+    public void setQuality(int quality) {
+        this.quality = quality;
+    }
+
     public String getTipo() {
         return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }
