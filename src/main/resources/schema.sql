@@ -33,5 +33,5 @@ values
 insert into
     t_ordenes (ord_id, ord_user, ord_item)
 values
-    (1,'Doobey','Elixir of the Mongoose'),
-    (2,'Hermione','+5 Dexterity Vest');
+    (default,'Doobey','Elixir of the Mongoose'),
+    (default,'Hermione','+5 Dexterity Vest');
