@@ -21,6 +21,13 @@ public class Orden extends PanacheEntityBase { // IMPORTANTE usar PanacheEntityB
     @JoinColumn(name = "ord_item")
     private Item item;
 
+    public Orden() {}
+
+    public Orden(Usuaria usuaria, Item item) {
+        this.setUser(usuaria);
+        this.setItem(item);
+    }
+
     public Long getId() {
         return id;
     }

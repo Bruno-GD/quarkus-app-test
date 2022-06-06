@@ -5,6 +5,7 @@ import edu.poniperro.dominio.Orden;
 import edu.poniperro.dominio.Usuaria;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,5 +61,32 @@ public class ServiceOlli {
      */
     public List<Orden> cargaOrden(String nombreUsuaria) {
         return Orden.getByUsuariaName(nombreUsuaria);
+    }
+
+    /**
+     * Devuelve una nueva orden para la {@link edu.poniperro.dominio.Usuaria} y
+     * el {@link edu.poniperro.dominio.Item} indicado, si ambos existen.
+     * Además, guarda la Orden en base de datos.
+     *
+     * @param nombreUsuaria el nombre de la Usuaria
+     * @param nombreItem el nombre del Item
+     * @return nueva Orden
+     * @see Orden
+     * @see Usuaria
+     * @see Item
+     */
+    @Transactional
+    public Orden comanda(String nombreUsuaria, String nombreItem) {
+        // obtenemos la Usuaria y el Item de base de datos
+        Usuaria usuaria = Usuaria.findById(nombreUsuaria);
+        Item item = Item.findById(nombreItem);
+
+        // Creamos una nueva Orden para Usuaria con Item
+        Orden orden = new Orden(usuaria, item);
+
+        // La guardamos en base de datos
+        orden.persist();
+
+        return orden;
     }
 }
