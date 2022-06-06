@@ -13,10 +13,10 @@ public class Usuaria extends PanacheEntityBase { // IMPORTANTE usar PanacheEntit
 
     @Id
     @Column(name = "user_nom")
-    private String nombre;
+    private String nombre = ""; // si la usuaria no existe, este será su valor por defecto
 
     @Column(name = "user_prop")
-    private int destreza;
+    private int destreza = 0; // si la usuaria no existe, este será su valor por defecto
 
     public String getNombre() {
         return nombre;
