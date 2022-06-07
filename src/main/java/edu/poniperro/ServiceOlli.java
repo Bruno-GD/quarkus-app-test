@@ -6,6 +6,7 @@ import edu.poniperro.dominio.Usuaria;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,8 +65,8 @@ public class ServiceOlli {
     }
 
     /**
-     * Devuelve una nueva orden para la {@link edu.poniperro.dominio.Usuaria} y
-     * el {@link edu.poniperro.dominio.Item} indicado, si ambos existen.
+     * Devuelve una nueva orden para la {@link Usuaria} y
+     * el {@link Item} indicado, si ambos existen.
      * Además, guarda la Orden en base de datos.
      *
      * Si la {@link Usuaria#getDestreza()} < {@link Item#getQuality()} no creará
@@ -93,5 +94,36 @@ public class ServiceOlli {
         orden.persist();
         // Devolvemos la entidad persistente
         return orden;
+    }
+
+    /**
+     * Devuelve una lista de órdenes para la {@link Usuaria} con los {@link Item Items} indicados.
+     * Todas las órdenes se guardarán en base de datos,
+     * siguiendo las condiciones de {@link #comanda(String, String) Comanda}.
+     *
+     * @param nombreUsuaria el nombre de la Usuaria
+     * @param nombresItem los nombres de los Items
+     * @return lista de nuevas Ordenes
+     * @see #comanda(String, String)
+     */
+    @Transactional
+    // es importante el uso de Transactional, ya que en este método haremos inserts múltiples
+    public List<Orden> comandaMultiple(String nombreUsuaria, List<String> nombresItem) {
+        // obtenemos la Usuaria
+        Optional<Usuaria> usuaria = Usuaria.findByIdOptional(nombreUsuaria);
+
+        if (usuaria.isEmpty()) return null;
+
+        List<Orden> ordenes = new ArrayList<>();
+        // creamos las órdenes solicitadas
+        for (String nombreItem :
+                nombresItem) {
+            // obtenemos la orden
+            Optional<Orden> orden = Optional.ofNullable(this.comanda(usuaria.get().getNombre(), nombreItem));
+            // la guardamos si es posible
+            orden.ifPresent(ordenes::add);
+        }
+
+        return ordenes;
     }
 }

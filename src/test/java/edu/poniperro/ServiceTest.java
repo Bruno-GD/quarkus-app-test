@@ -257,25 +257,25 @@ public class ServiceTest {
 	 * No se ordenan items que no existan en la base de datos.
 	 */
 
-//	@Test
-//	@Transactional
-//	public void test_ordenar_multiples_items_ok() {
-//		Assertions.assertThat(servicio).isNotNull();
-//		List<Orden> ordenes = servicio.comandaMultiple("Hermione", Arrays.asList("AgedBrie", "Elixir of the Mongoose"));
-//		Assertions.assertThat(ordenes).isNotEmpty();
-//		Assertions.assertThat(ordenes).size().isEqualTo(2);
-//
-//		TypedQuery<Orden> query = em.createQuery("select orden from Orden orden join orden.user user where user.nombre = 'Hermione'", Orden.class);
-//		List<Orden> pedidos = query.getResultList();
-//
-//        Assertions.assertThat(pedidos).isNotNull();
-//		Assertions.assertThat(pedidos).hasSize(3);
-//        Assertions.assertThat(pedidos.get(1).getUser().getNombre()).isEqualTo("Hermione");
-//		Assertions.assertThat(pedidos.get(1).getItem().getNombre()).isEqualToIgnoringCase("AgedBrie");
-//		Assertions.assertThat(pedidos.get(2).getItem().getNombre()).isEqualToIgnoringCase("Elixir of the Mongoose");
-//		em.find(Orden.class, pedidos.get(2).getId()).delete();
-//		em.find(Orden.class, pedidos.get(1).getId()).delete();
-//	}
+	@Test
+	@Transactional
+	public void test_ordenar_multiples_items_ok() {
+		Assertions.assertThat(servicio).isNotNull();
+		List<Orden> ordenes = servicio.comandaMultiple("Hermione", Arrays.asList("AgedBrie", "Elixir of the Mongoose"));
+		Assertions.assertThat(ordenes).isNotEmpty();
+		Assertions.assertThat(ordenes).size().isEqualTo(2);
+
+		TypedQuery<Orden> query = em.createQuery("select orden from Orden orden join orden.user user where user.nombre = 'Hermione'", Orden.class);
+		List<Orden> pedidos = query.getResultList();
+
+        Assertions.assertThat(pedidos).isNotNull();
+		Assertions.assertThat(pedidos).hasSize(3);
+        Assertions.assertThat(pedidos.get(1).getUser().getNombre()).isEqualTo("Hermione");
+		Assertions.assertThat(pedidos.get(1).getItem().getNombre()).isEqualToIgnoringCase("AgedBrie");
+		Assertions.assertThat(pedidos.get(2).getItem().getNombre()).isEqualToIgnoringCase("Elixir of the Mongoose");
+		em.find(Orden.class, pedidos.get(2).getId()).delete();
+		em.find(Orden.class, pedidos.get(1).getId()).delete();
+	}
 
 	// No se permiten ordenes si el usuario no existe en la base de datos
 //	@Test
