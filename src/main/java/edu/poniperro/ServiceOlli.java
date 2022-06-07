@@ -111,10 +111,11 @@ public class ServiceOlli {
     public List<Orden> comandaMultiple(String nombreUsuaria, List<String> nombresItem) {
         // obtenemos la Usuaria
         Optional<Usuaria> usuaria = Usuaria.findByIdOptional(nombreUsuaria);
-
-        if (usuaria.isEmpty()) return null;
-
+        // la lista de ordenes
         List<Orden> ordenes = new ArrayList<>();
+
+        if (usuaria.isEmpty()) return ordenes;
+
         // creamos las órdenes solicitadas
         for (String nombreItem :
                 nombresItem) {
