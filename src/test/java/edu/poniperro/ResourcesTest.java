@@ -27,18 +27,18 @@ public class ResourcesTest {
     @Inject
     EntityManager em;
 
-//    @Inject
-//    ResourcesOlli resources;
+    @Inject
+    ResourcesOlli resources;
     /**
      * Implementa una clase Resources que
      * añada una API REST a nuestra app.
      * Injecta el servicio en Resources.
      */
 
-//    @Test
-//    public void test_injeccion() {
-//        Assertions.assertThat(resources.service).isNotNull();
-//    }
+    @Test
+    public void test_injeccion() {
+        Assertions.assertThat(resources.service).isNotNull();
+    }
 
     /**
      * En el endpoint /wellcome
