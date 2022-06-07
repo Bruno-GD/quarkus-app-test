@@ -68,9 +68,12 @@ public class ServiceOlli {
      * el {@link edu.poniperro.dominio.Item} indicado, si ambos existen.
      * Además, guarda la Orden en base de datos.
      *
+     * Si la {@link Usuaria#getDestreza()} < {@link Item#getQuality()} no creará
+     * ninguna orden.
+     *
      * @param nombreUsuaria el nombre de la Usuaria
      * @param nombreItem el nombre del Item
-     * @return nueva Orden
+     * @return nueva Orden o null
      * @see Orden
      * @see Usuaria
      * @see Item
@@ -80,17 +83,15 @@ public class ServiceOlli {
         // obtenemos la Usuaria y el Item de base de datos
         Optional<Usuaria> usuaria = Usuaria.findByIdOptional(nombreUsuaria);
         Optional<Item> item = Item.findByIdOptional(nombreItem);
-        Orden orden = null;
 
-        if (usuaria.isPresent() &&
-            item.isPresent()) {
-            // Creamos una nueva Orden para Usuaria con Item
-            orden = new Orden(usuaria.get(), item.get());
+        if (usuaria.isEmpty() || item.isEmpty()) return null;
+        if (usuaria.get().getDestreza() < item.get().getQuality()) return null;
 
-            // La guardamos en base de datos
-            orden.persist();
-        }
-
+        // Creamos una nueva Orden para Usuaria con Item
+        Orden orden = new Orden(usuaria.get(), item.get());
+        // La guardamos en base de datos
+        orden.persist();
+        // Devolvemos la entidad persistente
         return orden;
     }
 }
