@@ -46,16 +46,16 @@ public class ResourcesTest {
      * "Wellcome Ollivanders!""
      */
 
-//    @Test
-//    public void test_wellcome() {
-//        given()
-//                .contentType(ContentType.TEXT)
-//                .when()
-//                .get("/wellcome")
-//                .then()
-//                .statusCode(200)
-//                .body(is("Wellcome Ollivanders!"));
-//    }
+    @Test
+    public void test_wellcome() {
+        given()
+                .contentType(ContentType.TEXT)
+                .when()
+                .get("/wellcome")
+                .then()
+                .statusCode(200)
+                .body(is("Wellcome Ollivanders!"));
+    }
 
     /**
      * La peticion

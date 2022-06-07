@@ -14,7 +14,8 @@ public class ResourcesOlli {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Path("/wellcome")
     public String hello() {
-        return "Hello from RESTEasy Reactive";
+        return "Wellcome Ollivanders!";
     }
 }
