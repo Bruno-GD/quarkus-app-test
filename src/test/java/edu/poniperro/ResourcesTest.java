@@ -120,24 +120,24 @@ public class ResourcesTest {
     }
 
     // Si la usuaria o el item no existen el controlador devuelve 404
-//    @Test
-//    public void test_post_ko() {
-//        given()
-//                .body("{\"user\": {\"nombre\": \"Severus\"}, \"item\": {\"nombre\": \"AgedBrie\"}}")
-//                .header("Content-Type", MediaType.APPLICATION_JSON)
-//                .when()
-//                .post("/ordena")
-//                .then()
-//                .statusCode(404);
-//
-//        given()
-//                .body("{\"user\": {\"nombre\": \"Doobey\"}, \"item\": {\"nombre\": \"Varita de Sauco\"}}")
-//                .header("Content-Type", MediaType.APPLICATION_JSON)
-//                .when()
-//                .post("/ordena")
-//                .then()
-//                .statusCode(404);
-//    }
+    @Test
+    public void test_post_ko() {
+        given()
+                .body("{\"user\": {\"nombre\": \"Severus\"}, \"item\": {\"nombre\": \"AgedBrie\"}}")
+                .header("Content-Type", MediaType.APPLICATION_JSON)
+                .when()
+                .post("/ordena")
+                .then()
+                .statusCode(404);
+
+        given()
+                .body("{\"user\": {\"nombre\": \"Doobey\"}, \"item\": {\"nombre\": \"Varita de Sauco\"}}")
+                .header("Content-Type", MediaType.APPLICATION_JSON)
+                .when()
+                .post("/ordena")
+                .then()
+                .statusCode(404);
+    }
 
     /**
      * Obten los pedidos de una usuaria mediante
