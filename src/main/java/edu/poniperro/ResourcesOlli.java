@@ -1,12 +1,10 @@
 package edu.poniperro;
 
+import edu.poniperro.dominio.Orden;
 import edu.poniperro.dominio.Usuaria;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -34,5 +32,17 @@ public class ResourcesOlli {
             return Response.status(404).build();
 
         return Response.ok(usuaria).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/ordena")
+    public Response nuevaOrden(@Valid Orden orden) {
+        Orden pedido = service.comanda(orden.getUser().getNombre(), orden.getItem().getNombre());
+        if (pedido == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        return Response.ok(orden).status(Response.Status.CREATED).build();
     }
 }

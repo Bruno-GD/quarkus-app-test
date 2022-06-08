@@ -23,8 +23,8 @@ public class Orden extends PanacheEntityBase { // IMPORTANTE usar PanacheEntityB
 
     public Orden() {}
 
-    public Orden(Usuaria usuaria, Item item) {
-        this.setUser(usuaria);
+    public Orden(Usuaria user, Item item) {
+        this.setUser(user);
         this.setItem(item);
     }
 
