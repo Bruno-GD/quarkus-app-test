@@ -1,5 +1,6 @@
 package edu.poniperro;
 
+import edu.poniperro.dominio.Item;
 import edu.poniperro.dominio.Orden;
 import edu.poniperro.dominio.Usuaria;
 import javax.inject.Inject;
@@ -54,5 +55,17 @@ public class ResourcesOlli {
         List<Orden> pedidos = service.cargaOrden(usuaria.getNombre());
 
         return Response.ok(pedidos).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/item/{nombre}")
+    public Response getItem(@Valid String nombre) {
+        Item item = service.cargaItem(nombre);
+
+        if (item.getNombre().isEmpty())
+            return Response.status(Response.Status.NOT_FOUND).build();
+
+        return Response.ok(item).build();
     }
 }
