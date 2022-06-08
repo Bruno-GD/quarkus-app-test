@@ -145,20 +145,20 @@ public class ResourcesTest {
      *      /pedidos/{usuaria}
      */
 
-//    @Test
-//    public void test_pedidos_usuaria() {
-//
-//        List<Map<String, Object>> pedidos =
-//                given()
-//                        .contentType(ContentType.JSON)
-//                        .when()
-//                        .get("/pedidos/{usuaria}", "Hermione")
-//                        .as(new TypeRef<List<Map<String, Object>>>() {});
-//
-//        Assertions.assertThat(pedidos).hasSize(1);
-//        Assertions.assertThat(pedidos.get(0).get("user")).hasFieldOrPropertyWithValue("nombre", "Hermione");
-//        Assertions.assertThat(pedidos.get(0).get("item")).hasFieldOrPropertyWithValue("nombre", "+5 Dexterity Vest");
-//    }
+    @Test
+    public void test_pedidos_usuaria() {
+
+        List<Map<String, Object>> pedidos =
+                given()
+                        .contentType(ContentType.JSON)
+                        .when()
+                        .get("/pedidos/{usuaria}", "Hermione")
+                        .as(new TypeRef<List<Map<String, Object>>>() {});
+
+        Assertions.assertThat(pedidos).hasSize(1);
+        Assertions.assertThat(pedidos.get(0).get("user")).hasFieldOrPropertyWithValue("nombre", "Hermione");
+        Assertions.assertThat(pedidos.get(0).get("item")).hasFieldOrPropertyWithValue("nombre", "+5 Dexterity Vest");
+    }
 
     /**
      * La peticion

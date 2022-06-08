@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/")
 public class ResourcesOlli {
@@ -44,5 +45,14 @@ public class ResourcesOlli {
             return Response.status(Response.Status.NOT_FOUND).build();
 
         return Response.ok(orden).status(Response.Status.CREATED).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/pedidos/{usuaria}")
+    public Response getPedidos(@Valid Usuaria usuaria) {
+        List<Orden> pedidos = service.cargaOrden(usuaria.getNombre());
+
+        return Response.ok(pedidos).build();
     }
 }
